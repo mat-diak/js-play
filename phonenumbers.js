@@ -10,9 +10,7 @@ const checkLength = (string) => {
 // takes an array of phone numbers.
 const filterLongNumbers = (numbers_array) => {
   // return only numbers that contain 10 characters or less.
-  for (let index = 0; index < numbers_array.length; index++) {
-    return numbers_array[index]
-  }
+  return numbers.filter(checkLength);
 };
 // It should make use of the function checkLength written previously.
 
@@ -31,6 +29,8 @@ const numbers = [
   '4763687363'
 ]
 
-for (let index = 0; index < numbers.length; index++) {
-  console.log(numbers[index])
-}
+// for (let index = 0; index < numbers.length; index++) {
+//   console.log(numbers[index])
+// }
+
+
