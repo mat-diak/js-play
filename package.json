@@ -1,0 +1,15 @@
+{
+  "name": "playing_with_js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "js_play.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^27.4.7"
+  }
+}
