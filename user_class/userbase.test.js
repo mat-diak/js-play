@@ -17,6 +17,22 @@ describe('userbase class', () => {
     const userBase = new UserBase(users);
     expect(userBase.count()).toBe(3);
   });
+  
+  it('gets all users\' names', () => {
+    const userBase = new UserBase(users);
+    expect(userBase.getNames()).toEqual(['Uma', 'Josh', 'Ollie']);
+  });
+  
+  it('gets all users\' introductions', () => {
+    const userBase = new UserBase(users);
+    expect(userBase.getIntroductions()).toEqual(
+      [
+        'Hi, my name is Uma',
+        'Hi, my name is Josh',
+        'Hi, my name is Ollie'
+      ]
+    );
+  });
 
 
 })
