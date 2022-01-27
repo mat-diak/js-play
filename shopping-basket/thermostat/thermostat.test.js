@@ -38,9 +38,67 @@ describe('Thermostat', () => {
     const thermostat = new Thermostat()
     expect(thermostat.mode).toEqual(true)
   });
+
+  it('can be turned off', () => { 
+    const thermostat = new Thermostat()
+    thermostat.setPowerSavingMode(false)
+    expect(thermostat.mode).toEqual(false)
+  })
+  
+  // If power saving mode is on, the maximum temperature is 25 degrees
+      it('does not go above 25 degree if power saving is on', () => {
+          const thermostat = new Thermostat()
+          thermostat.temperature = 24
+          thermostat.up()
+          thermostat.up()
+          expect(thermostat.getTemperature()).toEqual(25)
+      })
+  
+  // If power saving mode is off, the maximum temperature is 32 degrees
+      it('does not go above 32 degree if power saving mode is off', () => {
+          const thermostat = new Thermostat()
+          thermostat.setPowerSavingMode(false)
+          thermostat.temperature = 31
+          thermostat.up()
+          thermostat.up()
+          expect(thermostat.temperature).toEqual(32)
+      })
+
+  // You can reset the temperature to 20 with a reset method
+  it('resets the temperature to default', () => {
+    const thermostat = new Thermostat()
+    thermostat.temperature = 25
+    thermostat.resetTemperature()
+    expect(thermostat.temperature).toEqual(20)
+  });
+
+  // You can ask about the thermostat's current energy usage: 
+  // 18 is low-usage, 
+  it('shows energy usage', () => {
+    const thermostat = new Thermostat()
+    thermostat.temperature = 17
+    expect(thermostat.getEnergyUsage()).toEqual('low')
+  });
+  
+  // <= 25 is medium-usage, 
+  it('shows energy usage', () => {
+    const thermostat = new Thermostat()
+    thermostat.temperature = 18
+    expect(thermostat.getEnergyUsage()).toEqual('medium')
+  });
+  
+  it('shows energy usage', () => {
+    const thermostat = new Thermostat()
+    thermostat.temperature = 25
+    expect(thermostat.getEnergyUsage()).toEqual('medium')
+  });
+  
+  // anything else is high-usage.
+  it('shows energy usage', () => {
+    const thermostat = new Thermostat()
+    thermostat.temperature = 26
+    expect(thermostat.getEnergyUsage()).toEqual('high')
+  });
 });
 
-// If power saving mode is on, the maximum temperature is 25 degrees
-// If power saving mode is off, the maximum temperature is 32 degrees
-// You can reset the temperature to 20 with a reset method
-// You can ask about the thermostat's current energy usage: < 18 is low-usage, <= 25 is medium-usage, anything else is high-usage.
+

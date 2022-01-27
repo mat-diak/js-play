@@ -1,40 +1,63 @@
 class Thermostat {
   constructor() {
     this.temperature = 20;
-    this.mode = true
-  };
+    this.mode = true;
+  }
+
+  getEnergyUsage() {
+    if (this.temperature < 18) {
+      return 'low'
+    } else if (this.temperature >= 18  && this.temperature <= 25) {
+      return 'medium'
+    } else {
+      return 'high'
+    }
+  }
+
+  resetTemperature() {
+    this.temperature = 20
+  }
+
+  setPowerSavingMode(value) {
+    this.mode = value
+  }
 
   down() {
     if (this.temperature > 10) {
-      this.temperature -= 1
-    }; 
-  };
-  
+       this.temperature -= 1;
+    }
+  }
+
   up() {
-    this.temperature += 1
-  };
+    if (this.mode === true && this.temperature < 25) {
+       this.temperature += 1;
+    } else if(this.mode === false && this.temperature < 32) {
+        this.temperature += 1
+    }
+  }
 
   getTemperature() {
-    return this.temperature
-  };
-};
+    return this.temperature;
+  }
+}
 
-const t = new Thermostat()
-// t.down()
-// t.down()
-// t.down()
-// console.log(t) // 17
-// t.down()
-// t.down()
-// t.down()
-// t.down()
-// console.log(t) // 12
-// t.down()
-// t.down()
-// console.log(t) //10
-// t.down()
-// t.down()
-// t.down()
-// console.log(t) //10
+const t = new Thermostat();
+// t.up()
+// t.up()
+// t.up()
+// t.up()
+// t.up()
+// t.up()
+// t.up()
+// t.up()
+// t.up()
+// t.up()
+// t.up()
+// t.up()
+// t.up()
+// t.up()
+// t.up()
+// t.up()
+// console.log(t.getTemperature())
 
 module.exports = Thermostat;
