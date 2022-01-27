@@ -1,16 +1,18 @@
 const Candy = require('./candy') 
- let totalPrice = 0;
 
-class ShoppingBasket extends Candy {
-  // constructor() {
-  //   totalPrice = 0
-  //  }
-  getTotalPrice() {
-    return totalPrice;  
+class ShoppingBasket {
+  
+  constructor() {
+    this.totalPrice = 0
+   }
+  
+   getTotalPrice() {
+    return this.totalPrice;  
   }
   
   addItem(candy) {
-    totalPrice += candy.getPrice
+    this.totalPrice += candy.getPrice()
   }
 }
+
 module.exports = ShoppingBasket;

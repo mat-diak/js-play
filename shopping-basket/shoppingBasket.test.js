@@ -1,4 +1,3 @@
-const Candy = require('./candy');
 const ShoppingBasket = require('./shoppingBasket')
 
 describe('ShoppingBasket', () => {
@@ -7,10 +6,10 @@ describe('ShoppingBasket', () => {
     expect(basket.getTotalPrice()).toBe(0)
   });
   it('adds item', () => {
-    const basket = new ShoppingBasket()
-    const candy = new Candy('Skittle', 3.99)
-    basket.addItem(candy)
-    expect(basket.getTotalPrice()).toBe(3.99)
+    const basket = new ShoppingBasket();
+    const candy = { getPrice: () => 3.99 };
+    basket.addItem(candy);
+    basket.addItem(candy);
+    expect(basket.getTotalPrice()).toBe(7.98);
   });
-  
 });
