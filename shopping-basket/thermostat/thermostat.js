@@ -20,6 +20,9 @@ class Thermostat {
 
   setPowerSavingMode(value) {
     this.mode = value
+    if (this.temperature > 25) {
+      this.temperature = 25
+    }
   }
 
   down() {
@@ -30,9 +33,9 @@ class Thermostat {
 
   up() {
     if (this.mode === true && this.temperature < 25) {
-       this.temperature += 1;
+      this.temperature += 1;
     } else if(this.mode === false && this.temperature < 32) {
-        this.temperature += 1
+      this.temperature += 1
     }
   }
 
@@ -40,24 +43,5 @@ class Thermostat {
     return this.temperature;
   }
 }
-
-const t = new Thermostat();
-// t.up()
-// t.up()
-// t.up()
-// t.up()
-// t.up()
-// t.up()
-// t.up()
-// t.up()
-// t.up()
-// t.up()
-// t.up()
-// t.up()
-// t.up()
-// t.up()
-// t.up()
-// t.up()
-// console.log(t.getTemperature())
 
 module.exports = Thermostat;
